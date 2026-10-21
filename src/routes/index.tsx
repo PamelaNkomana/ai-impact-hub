@@ -28,10 +28,10 @@ function Index() {
         {tools.map((t) => (
           <Link key={t.url} to={t.url} className="group">
             <Card className="h-full p-5 transition hover:-translate-y-0.5 hover:shadow-soft">
-              <div className="mb-4 inline-flex rounded-lg bg-secondary p-2.5 text-primary"><t.icon className="h-5 w-5" /></div>
+              <div className="mb-4 inline-flex rounded-lg bg-secondary p-2.5 text-primary-deep"><t.icon className="h-5 w-5" /></div>
               <h2 className="font-semibold">{t.title}</h2>
               <p className="mt-1 text-sm text-muted-foreground">{t.desc}</p>
-              <span className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-primary">
+              <span className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-primary-deep">
                 Open <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
               </span>
             </Card>
