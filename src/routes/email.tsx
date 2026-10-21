@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { ToolPage } from "@/components/tool-page";
+import { ToolPage, toolAccents } from "@/components/tool-page";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
@@ -25,6 +25,7 @@ function EmailPage() {
   return (
     <ToolPage
       title="Smart Email Generator" subtitle="Describe what you need — get a polished email." feature="email"
+      accent={toolAccents.email}
       canSubmit={purpose.trim().length > 5}
       buildPrompt={() => `Tone: ${tone}\nRecipient: ${to || "not specified"}\nPurpose and key points:\n${purpose}`}
     >

@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { ToolPage } from "@/components/tool-page";
+import { ToolPage, toolAccents } from "@/components/tool-page";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
@@ -23,6 +23,7 @@ function ResearchPage() {
   return (
     <ToolPage
       title="AI Research Assistant" subtitle="Enter a topic or paste an article — get insights and recommendations." feature="research"
+      accent={toolAccents.research}
       canSubmit={topic.trim().length > 2 || article.trim().length > 50}
       buildPrompt={() => `Topic / question: ${topic || "Summarize the article below"}\n${article ? `\nArticle text:\n${article}` : ""}`}
     >

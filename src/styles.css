@@ -60,6 +60,16 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+  --color-tool-email: var(--tool-email);
+  --color-tool-email-deep: var(--tool-email-deep);
+  --color-tool-notes: var(--tool-notes);
+  --color-tool-notes-deep: var(--tool-notes-deep);
+  --color-tool-planner: var(--tool-planner);
+  --color-tool-planner-deep: var(--tool-planner-deep);
+  --color-tool-research: var(--tool-research);
+  --color-tool-research-deep: var(--tool-research-deep);
+  --color-tool-chat: var(--tool-chat);
+  --color-tool-chat-deep: var(--tool-chat-deep);
   --font-display: "Sora", sans-serif;
   --font-sans: "Manrope", sans-serif;
   --shadow-soft: var(--shadow-soft);
@@ -76,6 +86,18 @@
   --primary: oklch(0.78 0.09 218);
   --primary-foreground: oklch(0.24 0.05 250);
   --primary-deep: oklch(0.5 0.13 245);
+  /* Per-tool blue shades: each AI tool gets its own blue. Fills stay light
+     (deep navy text on them); deep variants color text, links, icons. */
+  --tool-email: oklch(0.76 0.09 252);
+  --tool-email-deep: oklch(0.48 0.13 254);
+  --tool-notes: oklch(0.79 0.085 208);
+  --tool-notes-deep: oklch(0.5 0.11 208);
+  --tool-planner: oklch(0.73 0.1 235);
+  --tool-planner-deep: oklch(0.47 0.12 236);
+  --tool-research: oklch(0.81 0.075 195);
+  --tool-research-deep: oklch(0.5 0.1 196);
+  --tool-chat: oklch(0.71 0.11 268);
+  --tool-chat-deep: oklch(0.46 0.14 270);
   --secondary: oklch(0.93 0.018 228);
   --secondary-foreground: oklch(0.28 0.04 245);
   --muted: oklch(0.94 0.014 230);
@@ -123,6 +145,16 @@
   --primary: oklch(0.78 0.09 218);
   --primary-foreground: oklch(0.22 0.045 250);
   --primary-deep: oklch(0.82 0.09 215);
+  --tool-email: oklch(0.76 0.09 252);
+  --tool-email-deep: oklch(0.82 0.09 254);
+  --tool-notes: oklch(0.79 0.085 208);
+  --tool-notes-deep: oklch(0.83 0.085 208);
+  --tool-planner: oklch(0.73 0.1 235);
+  --tool-planner-deep: oklch(0.81 0.095 236);
+  --tool-research: oklch(0.81 0.075 195);
+  --tool-research-deep: oklch(0.84 0.075 196);
+  --tool-chat: oklch(0.71 0.11 268);
+  --tool-chat-deep: oklch(0.8 0.1 270);
   --secondary: oklch(0.3 0.035 250);
   --secondary-foreground: oklch(0.95 0.012 230);
   --muted: oklch(0.3 0.035 250);
