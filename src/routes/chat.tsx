@@ -48,7 +48,7 @@ function ChatPage() {
       <div className="flex-1 space-y-5 overflow-y-auto pb-4">
         {msgs.length === 0 && (
           <div className="pt-12 text-center">
-            <Hexagon className="mx-auto h-10 w-10 text-primary-deep" />
+            <Hexagon className="mx-auto h-10 w-10 text-tool-chat-deep" />
             <h1 className="mt-3 text-2xl font-semibold">How can Nexa help today?</h1>
             <div className="mt-6 flex flex-wrap justify-center gap-2">
               {STARTERS.map((s) => <Button key={s} variant="outline" size="sm" onClick={() => send(s)}>{s}</Button>)}
@@ -56,10 +56,10 @@ function ChatPage() {
           </div>
         )}
         {msgs.map((m, i) => m.role === "user" ? (
-          <div key={i} className="ml-auto w-fit max-w-[85%] rounded-2xl rounded-br-sm bg-primary px-4 py-2.5 text-sm text-primary-foreground">{m.content}</div>
+          <div key={i} className="ml-auto w-fit max-w-[85%] rounded-2xl rounded-br-sm bg-tool-chat px-4 py-2.5 text-sm text-primary-foreground">{m.content}</div>
         ) : (
           <div key={i} className="flex gap-3">
-            <Hexagon className="mt-1 h-5 w-5 shrink-0 text-primary-deep" />
+            <Hexagon className="mt-1 h-5 w-5 shrink-0 text-tool-chat-deep" />
             <div className="ai-output min-w-0 text-sm"><ReactMarkdown remarkPlugins={[remarkGfm]}>{m.content}</ReactMarkdown></div>
           </div>
         ))}
@@ -70,7 +70,7 @@ function ChatPage() {
         <Textarea value={text} onChange={(e) => setText(e.target.value)} rows={1} placeholder="Ask a workplace question…"
           className="min-h-10 resize-none border-0 shadow-none focus-visible:ring-0"
           onKeyDown={(e) => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); send(text); } }} />
-        <Button type="submit" size="icon" disabled={!text.trim() || loading} aria-label="Send"><SendHorizontal /></Button>
+        <Button type="submit" size="icon" disabled={!text.trim() || loading} aria-label="Send" className="bg-tool-chat hover:bg-tool-chat/90"><SendHorizontal /></Button>
       </form>
       <div className="mt-3"><Disclaimer /></div>
     </div>

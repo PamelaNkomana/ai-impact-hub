@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { ToolPage } from "@/components/tool-page";
+import { ToolPage, toolAccents } from "@/components/tool-page";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 
@@ -26,12 +26,13 @@ function NotesPage() {
   return (
     <ToolPage
       title="Meeting Notes Summarizer" subtitle="Paste raw notes — get summary, decisions, actions and deadlines." feature="notes"
+      accent={toolAccents.notes}
       canSubmit={notes.trim().length > 20} buildPrompt={() => `Meeting notes:\n${notes}`}
     >
       <div className="space-y-2">
         <div className="flex items-center justify-between">
           <Label htmlFor="n">Meeting notes</Label>
-          <button type="button" className="text-xs font-medium text-primary hover:underline" onClick={() => setNotes(SAMPLE)}>Use sample</button>
+          <button type="button" className="text-xs font-medium text-tool-notes-deep hover:underline" onClick={() => setNotes(SAMPLE)}>Use sample</button>
         </div>
         <Textarea id="n" rows={14} placeholder="Paste your meeting notes or transcript…" value={notes} onChange={(e) => setNotes(e.target.value)} />
       </div>

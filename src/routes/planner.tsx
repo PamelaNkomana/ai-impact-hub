@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { ToolPage } from "@/components/tool-page";
+import { ToolPage, toolAccents } from "@/components/tool-page";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
@@ -25,6 +25,7 @@ function PlannerPage() {
   return (
     <ToolPage
       title="AI Task Planner" subtitle="List your tasks — get priorities and a realistic schedule." feature="planner"
+      accent={toolAccents.planner}
       canSubmit={tasks.trim().length > 5}
       buildPrompt={() => `Plan type: ${range}\nWorking hours: ${hours}\nTasks (with any deadlines/durations):\n${tasks}`}
     >
