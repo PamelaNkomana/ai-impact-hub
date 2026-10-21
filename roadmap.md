@@ -5,3 +5,5 @@
 - [x] AI Task Planner
 - [x] AI Research Assistant
 - [x] AI Chatbot
+- [ ] Light blue theme (applied, verifying)
+- [ ] Silver streaks / metallic texture on light blue surfaces

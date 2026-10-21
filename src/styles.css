@@ -102,6 +102,15 @@
   --sidebar-ring: oklch(0.62 0.12 225);
   --gradient-hero: linear-gradient(135deg, oklch(0.88 0.05 220), oklch(0.76 0.1 218) 50%, oklch(0.66 0.12 235));
   --shadow-soft: 0 10px 30px -12px oklch(0.6 0.09 225 / 0.4);
+
+  /* Silver streaks. The hero keeps pale silver streaks in both modes because
+     its gradient stays light; page streaks dim down for dark mode. */
+  --streak-bright: oklch(0.99 0.006 220 / 0.8);
+  --streak-soft: oklch(0.9 0.02 228 / 0.5);
+  --streak-page: oklch(0.99 0.005 225 / 0.9);
+  --streak-page-soft: oklch(0.93 0.015 232 / 0.55);
+  --streak-plate: oklch(0.95 0.012 226 / 0.75);
+  --streak-plate-soft: oklch(0.9 0.02 230 / 0.4);
 }
 
 .dark {
@@ -140,6 +149,13 @@
   --sidebar-ring: oklch(0.72 0.11 220);
   --gradient-hero: linear-gradient(135deg, oklch(0.88 0.05 220), oklch(0.76 0.1 218) 50%, oklch(0.66 0.12 235));
   --shadow-soft: 0 10px 30px -12px oklch(0.6 0.09 225 / 0.45);
+
+  --streak-bright: oklch(0.99 0.006 220 / 0.85);
+  --streak-soft: oklch(0.9 0.02 228 / 0.55);
+  --streak-page: oklch(1 0 0 / 0.06);
+  --streak-page-soft: oklch(1 0 0 / 0.035);
+  --streak-plate: oklch(0.9 0.02 226 / 0.1);
+  --streak-plate-soft: oklch(0.85 0.03 230 / 0.07);
 }
 
 @layer base {
@@ -149,11 +165,59 @@
 
   body {
     background-color: var(--color-background);
+    background-image:
+      repeating-linear-gradient(115deg, var(--streak-page) 0 1px, transparent 1px 48px),
+      repeating-linear-gradient(115deg, var(--streak-page-soft) 0 4px, transparent 4px 130px);
     color: var(--color-foreground);
   }
 }
 
-@utility bg-hero { background-image: var(--gradient-hero); }
+@keyframes sheen {
+  0%,
+  100% {
+    transform: translateX(-75%);
+  }
+  50% {
+    transform: translateX(75%);
+  }
+}
+
+/* Light blue plate with brushed silver streaks running through it. */
+@utility silver-plate {
+  background-image:
+    repeating-linear-gradient(115deg, var(--streak-plate) 0 1px, transparent 1px 30px),
+    repeating-linear-gradient(115deg, var(--streak-plate-soft) 0 5px, transparent 5px 96px),
+    linear-gradient(115deg, transparent 0 55%, var(--streak-plate-soft) 78%, transparent 100%);
+}
+
+/* Hero: light blue gradient, silver streaks, and a slow sheen that sweeps past. */
+@utility bg-hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background-image:
+    linear-gradient(115deg, var(--streak-bright) 0%, transparent 12%, transparent 88%, var(--streak-bright) 100%),
+    repeating-linear-gradient(115deg, var(--streak-bright) 0 1px, transparent 1px 26px),
+    repeating-linear-gradient(115deg, var(--streak-soft) 0 6px, transparent 6px 74px),
+    var(--gradient-hero);
+  &::after {
+    content: "";
+    position: absolute;
+    inset: -60% -30%;
+    z-index: -1;
+    pointer-events: none;
+    background: linear-gradient(115deg, transparent 40%, var(--streak-bright) 50%, transparent 60%);
+    transform: translateX(-75%);
+    animation: sheen 9s ease-in-out infinite;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bg-hero::after {
+    animation: none;
+  }
+}
+
 @layer base { h1, h2, h3 { font-family: var(--font-display); letter-spacing: -0.02em; } body { font-family: var(--font-sans); } }
 .ai-output h2 { font-size: 1.05rem; font-weight: 600; margin: 1.1rem 0 0.4rem; color: var(--primary-deep); }
 .ai-output p { margin: 0.4rem 0; line-height: 1.65; }
