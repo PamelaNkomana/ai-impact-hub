@@ -1,5 +1,6 @@
 import { useState, type ReactNode } from "react";
 import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import { Copy, Loader2, Wand2 } from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
@@ -57,7 +58,7 @@ export function ToolPage({
           {loading ? (
             <div className="space-y-2">{[90, 75, 85, 60].map((w) => <div key={w} className="h-3 animate-pulse rounded bg-muted" style={{ width: `${w}%` }} />)}</div>
           ) : out ? (
-            <div className="ai-output text-sm"><ReactMarkdown>{out}</ReactMarkdown></div>
+            <div className="ai-output text-sm"><ReactMarkdown remarkPlugins={[remarkGfm]}>{out}</ReactMarkdown></div>
           ) : (
             <p className="m-auto text-center text-sm text-muted-foreground">Your result will appear here.</p>
           )}
