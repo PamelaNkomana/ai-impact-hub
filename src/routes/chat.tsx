@@ -66,7 +66,7 @@ function ChatPage() {
         {loading && <div className="flex items-center gap-2 text-sm text-muted-foreground"><Loader2 className="h-4 w-4 animate-spin" /> Thinking…</div>}
         <div ref={end} />
       </div>
-      <form className="flex items-end gap-2 rounded-xl border bg-card p-2 shadow-soft" onSubmit={(e) => { e.preventDefault(); send(text); }}>
+      <form className="silver-plate flex items-end gap-2 rounded-xl border bg-card p-2 shadow-soft" onSubmit={(e) => { e.preventDefault(); send(text); }}>
         <Textarea value={text} onChange={(e) => setText(e.target.value)} rows={1} placeholder="Ask a workplace question…"
           className="min-h-10 resize-none border-0 shadow-none focus-visible:ring-0"
           onKeyDown={(e) => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); send(text); } }} />
