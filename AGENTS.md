@@ -10,3 +10,4 @@
 <!-- LOVABLE:END -->
 
 - All AI calls go through the single `runAI` server function in src/lib/ai.functions.ts, with one system prompt per feature, so prompts and safety rules live in one place.
+- Colors come only from the semantic tokens in src/styles.css: `--primary` fills with dark `--primary-foreground` text, `--primary-deep` for text/links/icons on light surfaces, and the `silver-plate`/`bg-hero` utilities for the silver streak texture — so the theme stays readable and re-themable.

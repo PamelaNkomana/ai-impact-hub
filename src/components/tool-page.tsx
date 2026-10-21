@@ -39,14 +39,14 @@ export function ToolPage({
         <p className="mt-1 text-muted-foreground">{subtitle}</p>
       </div>
       <div className="grid gap-6 lg:grid-cols-2">
-        <Card className="space-y-4 p-5 shadow-soft">
+        <Card className="silver-plate space-y-4 p-5 shadow-soft">
           <h2 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">Input</h2>
           {children}
           <Button onClick={go} disabled={!canSubmit || loading} className="w-full" size="lg">
             {loading ? <Loader2 className="animate-spin" /> : <Wand2 />} {loading ? "Generating…" : "Generate"}
           </Button>
         </Card>
-        <Card className="flex min-h-80 flex-col p-5 shadow-soft">
+        <Card className="silver-plate flex min-h-80 flex-col p-5 shadow-soft">
           <div className="mb-3 flex items-center justify-between">
             <h2 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">AI Output</h2>
             {out && (
