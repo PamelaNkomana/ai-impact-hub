@@ -16,6 +16,15 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
+/* Each AI tool gets its own shade of blue (see --tool-* tokens in styles.css). */
+const accents: Record<string, { fill: string; deep: string }> = {
+  "/email": { fill: "bg-tool-email", deep: "text-tool-email-deep" },
+  "/notes": { fill: "bg-tool-notes", deep: "text-tool-notes-deep" },
+  "/planner": { fill: "bg-tool-planner", deep: "text-tool-planner-deep" },
+  "/research": { fill: "bg-tool-research", deep: "text-tool-research-deep" },
+  "/chat": { fill: "bg-tool-chat", deep: "text-tool-chat-deep" },
+};
+
 function Index() {
   return (
     <div className="mx-auto max-w-6xl space-y-8 p-4 md:p-8">
@@ -25,18 +34,22 @@ function Index() {
         <p className="mt-4 max-w-xl opacity-85">Five focused AI tools in one place — write, summarize, plan, research and ask.</p>
       </section>
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {tools.map((t) => (
-          <Link key={t.url} to={t.url} className="group">
-            <Card className="silver-plate h-full p-5 transition hover:-translate-y-0.5 hover:shadow-soft">
-              <div className="mb-4 inline-flex rounded-lg bg-secondary p-2.5 text-primary-deep"><t.icon className="h-5 w-5" /></div>
-              <h2 className="font-semibold">{t.title}</h2>
-              <p className="mt-1 text-sm text-muted-foreground">{t.desc}</p>
-              <span className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-primary-deep">
-                Open <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
-              </span>
-            </Card>
-          </Link>
-        ))}
+        {tools.map((t) => {
+          const a = accents[t.url];
+          return (
+            <Link key={t.url} to={t.url} className="group">
+              <Card className="silver-plate h-full p-5 transition hover:-translate-y-0.5 hover:shadow-soft">
+                <div className={`mb-3 h-1.5 w-12 rounded-full ${a.fill}`} />
+                <div className={`mb-4 inline-flex rounded-lg ${a.fill} p-2.5 text-primary-foreground`}><t.icon className="h-5 w-5" /></div>
+                <h2 className="font-semibold">{t.title}</h2>
+                <p className="mt-1 text-sm text-muted-foreground">{t.desc}</p>
+                <span className={`mt-4 inline-flex items-center gap-1 text-sm font-medium ${a.deep}`}>
+                  Open <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
+                </span>
+              </Card>
+            </Link>
+          );
+        })}
       </div>
       <Disclaimer />
     </div>
